@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Àjọkẹ́ Kitchen | Nigerian & Continental Cuisine</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f7f7f7;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    height: 90vh;
+    background:
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+        url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+header h1 {
+    font-size: 3.2rem;
+}
+
+header p {
+    margin: 15px 0;
+    font-size: 1.2rem;
+}
+
+header a {
+    background: #c0392b;
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    color: #c0392b;
+}
+
+/* MENU GRID */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.menu-item {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.menu-content {
+    padding: 20px;
+}
+
+.menu-content h3 {
+    margin-bottom: 8px;
+}
+
+.price {
+    color: #c0392b;
+    font-weight: bold;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.menu-content button {
+    background: #c0392b;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* CART */
+.cart {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.08);
+}
+
+.cart ul {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.cart li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: #aaa;
+    text-align: center;
+    padding: 20px;
+}
+
+/* MOBILE */
+@media(max-width: 600px){
+    header h1 {
+        font-size: 2.3rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h1>Àjọkẹ́ Kitchen</h1>
+        <p>Authentic Nigerian Dishes • Intercontinental Classics</p>
+        <a href="#menu">Order Now</a>
+    </div>
+</header>
+
+<section id="menu">
+<div class="section-title">
+    <h2>Order Food</h2>
+</div>
+
+<h3>🇳🇬 Nigerian Dishes</h3><br>
+
+<div class="menu-grid">
+    <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1625944525533-473f1a3c5e7d">
+        <div class="menu-content">
+            <h3>Jollof Rice & Chicken</h3>
+            <span class="price">₦3,500</span>
+            <button onclick="addToCart('Jollof Rice', 3500)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1630914441934-9f6f92d9279b">
+        <div class="menu-content">
+            <h3>Pounded Yam & Egusi</h3>
+            <span class="price">₦4,000</span>
+            <button onclick="addToCart('Egusi Soup', 4000)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1642162025953-78c57a97dc0b">
+        <div class="menu-content">
+            <h3>Suya Platter</h3>
+            <span class="price">₦2,500</span>
+            <button onclick="addToCart('Suya', 2500)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<h3>🌍 Intercontinental</h3><br>
+
+<div class="menu-grid">
+    <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b">
+        <div class="menu-content">
+            <h3>Creamy Alfredo Pasta</h3>
+            <span class="price">₦5,500</span>
+            <button onclick="addToCart('Pasta', 5500)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1604908812324-4e4c3e6b7d6d">
+        <div class="menu-content">
+            <h3>Grilled Chicken & Fries</h3>
+            <span class="price">₦6,000</span>
+            <button onclick="addToCart('Grilled Chicken', 6000)">Add to Cart</button>
+        </div>
+    </div>
+</div>
+</section>
+
+<section>
+<div class="section-title">
+    <h2>Your Cart</h2>
+</div>
+
+<div class="cart">
+    <ul id="cartItems"></ul>
+    <p class="total">Total: ₦<span id="total">0</span></p>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Àjọkẹ́ Kitchen • Lagos, Nigeria</p>
+</footer>
+
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(name, price){
+    cart.push({name, price});
+    total += price;
+    renderCart();
+}
+
+function renderCart(){
+    const cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = "";
+
+    cart.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${item.name}</span><span>₦${item.price}</span>`;
+        cartItems.appendChild(li);
+    });
+
+    document.getElementById("total").textContent = total;
+}
+</script>
+
+</body>
+</html>
