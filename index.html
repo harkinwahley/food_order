@@ -3,200 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Àjọkẹ́ Kitchen | Full Menu</title>
+    <title>Àjọkẹ́ Kitchen | Full Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        :root {
-            --primary-red: #d32f2f;
-            --accent-yellow: #ffc107;
-            --dark-gray: #222;
-            --light-bg: #f4f4f4;
+        :root { --primary: #d32f2f; --secondary: #ffc107; --bg: #f8f9fa; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background: var(--bg); padding-bottom: 120px; }
+
+        /* HEADER */
+        header { 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800');
+            background-size: cover; color: white; text-align: center; padding: 40px 20px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', sans-serif; }
-        body { background: var(--light-bg); padding-bottom: 100px; }
-
-        /* --- HEADER --- */
-        header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000');
-            background-size: cover; background-position: center;
-            color: white; padding: 60px 20px; text-align: center;
-        }
-
-        /* --- CATEGORY SCROLLER --- */
-        .nav-wrapper {
+        /* STICKY NAV */
+        .nav-scroller {
             position: sticky; top: 0; background: white; z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow-x: auto; white-space: nowrap; padding: 10px;
+            display: flex; overflow-x: auto; padding: 12px; gap: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .nav-btn {
-            display: inline-block; padding: 10px 20px; margin: 0 5px;
-            border-radius: 20px; border: 1px solid #ddd; background: #fff;
-            cursor: pointer; font-weight: bold; font-size: 0.9rem;
+        .nav-item {
+            background: #eee; border: none; padding: 8px 18px; 
+            border-radius: 20px; white-space: nowrap; font-weight: 600; cursor: pointer;
         }
-        .nav-btn.active { background: var(--primary-red); color: white; border-color: var(--primary-red); }
+        .nav-item.active { background: var(--primary); color: white; }
 
-        /* --- MENU LAYOUT --- */
-        .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
-        .section-header { margin: 20px 0; border-left: 5px solid var(--primary-red); padding-left: 10px; }
+        /* MENU SECTION */
+        .container { max-width: 900px; margin: auto; padding: 15px; }
+        .cat-title { margin: 25px 0 15px; color: var(--primary); border-bottom: 2px solid var(--secondary); display: inline-block; }
         
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-
-        .item-card {
-            background: white; border-radius: 8px; overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: center; padding-bottom: 10px;
+        .menu-list { display: flex; flex-direction: column; gap: 12px; }
+        .menu-card {
+            background: white; border-radius: 12px; padding: 12px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        .item-card img { width: 100%; height: 120px; object-fit: cover; }
-        .item-card h4 { font-size: 0.9rem; margin: 10px 0 5px; padding: 0 5px; }
-        .item-price { color: var(--primary-red); font-weight: bold; display: block; margin-bottom: 10px; }
+        .item-info h4 { margin-bottom: 4px; font-size: 1rem; }
+        .item-info p { color: var(--primary); font-weight: bold; font-size: 0.9rem; }
+
+        /* QUANTITY CONTROLS */
+        .qty-controls { display: flex; align-items: center; gap: 12px; background: #f0f0f0; padding: 5px 10px; border-radius: 8px; }
+        .qty-btn { 
+            background: white; border: 1px solid #ddd; width: 28px; height: 28px; 
+            border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 1.1rem;
+        }
+        .qty-val { font-weight: bold; min-width: 15px; text-align: center; }
+
+        /* CART BAR */
+        .cart-footer {
+            position: fixed; bottom: 0; left: 0; right: 0; background: white;
+            padding: 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
+            display: none; flex-direction: column; gap: 12px; z-index: 2000;
+        }
+        .cart-meta { display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; }
+        .mode-selector { display: flex; gap: 15px; justify-content: center; background: #f9f9f9; padding: 8px; border-radius: 8px; }
         
-        .add-qty-btn {
-            background: var(--accent-yellow); border: none; padding: 8px 15px;
-            border-radius: 4px; cursor: pointer; font-weight: bold; width: 90%;
-        }
-
-        /* --- CHECKOUT BAR --- */
-        .cart-bar {
-            position: fixed; bottom: 0; width: 100%; background: white;
-            box-shadow: 0 -2px 20px rgba(0,0,0,0.2); padding: 20px;
-            display: none; flex-direction: column; gap: 10px; z-index: 2000;
-        }
-        .options-row { display: flex; justify-content: space-around; padding-bottom: 10px; border-bottom: 1px solid #eee; }
         .whatsapp-btn {
-            background: #25D366; color: white; text-decoration: none;
-            padding: 15px; border-radius: 8px; text-align: center;
-            font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: #25D366; color: white; text-align: center; padding: 15px;
+            border-radius: 10px; text-decoration: none; font-weight: bold;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
         }
+
+        /* CUSTOM UTILS */
+        .badge { background: var(--secondary); font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-left: 5px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Àjọkẹ́ Kitchen</h1>
-    <p>Authentic Flavors, Modern Convenience</p>
+    <p>Premium Nigerian & Continental Dining</p>
 </header>
 
-<div class="nav-wrapper">
-    <button class="nav-btn active" onclick="scrollToSec('yoruba')">Yoruba Dishes</button>
-    <button class="nav-btn" onclick="scrollToSec('calabar')">Calabar Kitchen</button>
-    <button class="nav-btn" onclick="scrollToSec('proteins')">Proteins</button>
-    <button class="nav-btn" onclick="scrollToSec('continental')">Continental</button>
+<div class="nav-scroller">
+    <button class="nav-item active" onclick="jump('yoruba')">Yoruba</button>
+    <button class="nav-item" onclick="jump('calabar')">Calabar</button>
+    <button class="nav-item" onclick="jump('proteins')">Proteins</button>
+    <button class="nav-item" onclick="jump('drinks')">Drinks & Dairy</button>
 </div>
 
 <div class="container">
-    <!-- YORUBA SECTION -->
-    <div id="yoruba" class="section-group">
-        <div class="section-header"><h2>Yoruba Specialties</h2></div>
-        <div class="menu-grid">
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200">
-                <h4>Amala & Abula</h4>
-                <span class="item-price">₦3,000</span>
-                <button class="add-qty-btn" onclick="addToCart('Amala & Abula', 3000)">Add to Order</button>
-            </div>
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200">
-                <h4>Pounded Yam</h4>
-                <span class="item-price">₦1,500</span>
-                <button class="add-qty-btn" onclick="addToCart('Pounded Yam (Swallow)', 1500)">Add to Order</button>
-            </div>
-        </div>
-    </div>
+    <!-- YORUBA DISHES -->
+    <h3 class="cat-title" id="yoruba">Yoruba Specialties</h3>
+    <div class="menu-list">
+        <!-- Using a function to generate items for cleaner code -->
+        <script>
+            const menuData = {
+                yoruba: [
+                    {n: "Amala & Abula", p: 3500},
+                    {n: "Pounded Yam", p: 1500},
+                    {n: "Semovita", p: 1200},
+                    {n: "Eba (Yellow/White)", p: 1000},
+                    {n: "Pupuru", p: 1500},
+                    {n: "Iyan-Ado (Special)", p: 2000}
+                ],
+                calabar: [
+                    {n: "Edikaikong Soup", p: 5000},
+                    {n: "Afang Soup", p: 5000},
+                    {n: "Fisherman Soup", p: 6500},
+                    {n: "Atama Soup", p: 4500},
+                    {n: "Ekpang Nkukwo", p: 5500}
+                ],
+                proteins: [
+                    {n: "Fried Chicken", p: 1500},
+                    {n: "Fried Turkey", p: 3000},
+                    {n: "Peppered Gizzard", p: 2500},
+                    {n: "Assorted Meat", p: 1200},
+                    {n: "Grilled Catfish", p: 7000},
+                    {n: "Boiled Egg", p: 300}
+                ],
+                drinks: [
+                    {n: "Fresh Yoghurt (50cl)", p: 1500},
+                    {n: "Zobo Drink (House Blend)", p: 800},
+                    {n: "Bottled Water", p: 300},
+                    {n: "Coke / Fanta / Sprite", p: 500},
+                    {n: "Hollandia Yoghurt", p: 2500},
+                    {n: "Maltina", p: 700}
+                ]
+            };
 
-    <!-- CALABAR SECTION -->
-    <div id="calabar" class="section-group">
-        <div class="section-header"><h2>Calabar Kitchen</h2></div>
-        <div class="menu-grid">
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=200">
-                <h4>Edikaikong Soup</h4>
-                <span class="item-price">₦4,500</span>
-                <button class="add-qty-btn" onclick="addToCart('Edikaikong Soup', 4500)">Add to Order</button>
-            </div>
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=200">
-                <h4>Afang Soup</h4>
-                <span class="item-price">₦4,500</span>
-                <button class="add-qty-btn" onclick="addToCart('Afang Soup', 4500)">Add to Order</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- PROTEIN SECTION -->
-    <div id="proteins" class="section-group">
-        <div class="section-header"><h2>Extra Proteins</h2></div>
-        <div class="menu-grid">
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=200">
-                <h4>Grilled Fish</h4>
-                <span class="item-price">₦2,500</span>
-                <button class="add-qty-btn" onclick="addToCart('Grilled Fish', 2500)">Add to Order</button>
-            </div>
-            <div class="item-card">
-                <img src="https://images.unsplash.com/photo-1606131731446-5568d87113aa?w=200">
-                <h4>Fried Beef</h4>
-                <span class="item-price">₦1,000</span>
-                <button class="add-qty-btn" onclick="addToCart('Fried Beef', 1000)">Add to Order</button>
-            </div>
-        </div>
+            for (const [cat, items] of Object.entries(menuData)) {
+                if(cat !== 'yoruba') document.write(`<h3 class="cat-title" id="${cat}">${cat.charAt(0).toUpperCase() + cat.slice(1)}</h3><div class="menu-list">`);
+                items.forEach(item => {
+                    document.write(`
+                        <div class="menu-card">
+                            <div class="item-info">
+                                <h4>${item.n}</h4>
+                                <p>₦${item.p.toLocaleString()}</p>
+                            </div>
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="updateQty('${item.n}', ${item.p}, -1)">-</button>
+                                <span class="qty-val" id="qty-${item.n}">0</span>
+                                <button class="qty-btn" onclick="updateQty('${item.n}', ${item.p}, 1)">+</button>
+                            </div>
+                        </div>
+                    `);
+                });
+                document.write(`</div>`);
+            }
+        </script>
     </div>
 </div>
 
-<!-- FOOTER ORDER BAR -->
-<div class="cart-bar" id="cartBar">
-    <div class="options-row">
-        <label><input type="radio" name="dtype" value="Delivery" checked> 🏍️ Delivery</label>
-        <label><input type="radio" name="dtype" value="Pick-up"> 🥡 Pick-up</label>
+<div class="cart-footer" id="cartFooter">
+    <div class="mode-selector">
+        <label><input type="radio" name="delivery" value="Delivery" checked> 🏍️ Delivery</label>
+        <label><input type="radio" name="delivery" value="Pick-up"> 🥡 Pick-up</label>
     </div>
-    <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-        <span>Items: <b id="cartCount">0</b></span>
-        <span>Total: <b id="totalPrice">₦0</b></span>
+    <div class="cart-meta">
+        <span>Total: ₦<span id="displayTotal">0</span></span>
+        <span id="displayCount">0 Items</span>
     </div>
-    <a href="#" class="whatsapp-btn" onclick="sendWhatsApp()">
-        <i class="fab fa-whatsapp"></i> PLACE ORDER ON WHATSAPP
+    <a href="#" class="whatsapp-btn" onclick="checkout()">
+        <i class="fab fa-whatsapp"></i> SEND ORDER TO WHATSAPP
     </a>
 </div>
 
 <script>
-    let cart = [];
-    let total = 0;
+    let cart = {};
+    let grandTotal = 0;
 
-    function scrollToSec(id) {
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        // Update active button styling
-        document.querySelectorAll('.nav-btn').forEach(btn => {
+    function updateQty(name, price, change) {
+        if (!cart[name]) cart[name] = { qty: 0, price: price };
+        
+        cart[name].qty += change;
+        if (cart[name].qty < 0) cart[name].qty = 0;
+        
+        // Update Individual Display
+        document.getElementById(`qty-${name}`).innerText = cart[name].qty;
+        
+        calculateTotals();
+    }
+
+    function calculateTotals() {
+        grandTotal = 0;
+        let itemCount = 0;
+        
+        for (const item in cart) {
+            grandTotal += (cart[item].qty * cart[item].price);
+            itemCount += cart[item].qty;
+        }
+
+        const footer = document.getElementById('cartFooter');
+        if (itemCount > 0) {
+            footer.style.display = 'flex';
+        } else {
+            footer.style.display = 'none';
+        }
+
+        document.getElementById('displayTotal').innerText = grandTotal.toLocaleString();
+        document.getElementById('displayCount').innerText = itemCount + " Items";
+    }
+
+    function jump(id) {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.querySelectorAll('.nav-item').forEach(btn => {
             btn.classList.remove('active');
-            if(btn.innerText.toLowerCase().includes(id)) btn.classList.add('active');
+            if(btn.innerText.toLowerCase().includes(id.substring(0,3))) btn.classList.add('active');
         });
     }
 
-    function addToCart(name, price) {
-        cart.push({name, price});
-        total += price;
-        updateUI();
-    }
+    function checkout() {
+        const phone = "2348000000000"; // SET YOUR NUMBER HERE
+        const mode = document.querySelector('input[name="delivery"]:checked').value;
+        
+        let msg = `*NEW ORDER FROM ÀJỌKẸ́ KITCHEN*%0A`;
+        msg += `--------------------------%0A`;
+        
+        for (const name in cart) {
+            if (cart[name].qty > 0) {
+                msg += `✅ ${cart[name].qty}x ${name} (₦${(cart[name].qty * cart[name].price).toLocaleString()})%0A`;
+            }
+        }
+        
+        msg += `--------------------------%0A`;
+        msg += `*GRAND TOTAL: ₦${grandTotal.toLocaleString()}*%0A`;
+        msg += `*METHOD:* ${mode}%0A`;
+        msg += `--------------------------%0A`;
+        msg += `_Please provide your address if for delivery._`;
 
-    function updateUI() {
-        const bar = document.getElementById('cartBar');
-        bar.style.display = 'flex';
-        document.getElementById('cartCount').innerText = cart.length;
-        document.getElementById('totalPrice').innerText = '₦' + total.toLocaleString();
-    }
-
-    function sendWhatsApp() {
-        const phone = "2348000000000"; // REPLACE WITH YOUR REAL NUMBER
-        const type = document.querySelector('input[name="dtype"]:checked').value;
-        
-        let message = `*NEW ORDER - Àjọkẹ́ Kitchen*%0A--------------------------%0A`;
-        cart.forEach((item, index) => {
-            message += `${index + 1}. ${item.name} - ₦${item.price.toLocaleString()}%0A`;
-        });
-        
-        message += `--------------------------%0A*Total: ₦${total.toLocaleString()}*%0A*Method: ${type}*`;
-        
-        const url = `https://wa.me/${phone}?text=${message}`;
-        window.open(url, '_blank');
+        window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
     }
 </script>
 
