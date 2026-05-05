@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Àjọkẹ́ Kitchen | Nigerian & Continental Cuisine</title>
-    <!-- Adding Google Fonts for a more premium look -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="custom">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -32,7 +31,6 @@
             line-height: 1.6;
         }
 
-        /* NAVIGATION */
         nav {
             background: #fff;
             padding: 15px 5%;
@@ -53,11 +51,10 @@
             font-weight: bold;
         }
 
-        /* HEADER / HERO */
         header {
-            height: 80vh;
+            height: 60vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                        url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1350&q=80");
+                        url("https://images.unsplash.com/photo-1534422298391-e4f8c170db76?auto=format&fit=crop&w=1350&q=80");
             background-size: cover;
             background-position: center;
             display: flex;
@@ -66,19 +63,13 @@
             text-align: center;
             color: #fff;
             padding: 0 20px;
-            margin-top: 60px; /* Space for fixed nav */
+            margin-top: 60px;
         }
 
         header h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 8vw, 4rem);
             margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            font-weight: 300;
         }
 
         .cta-btn {
@@ -97,20 +88,17 @@
             transform: translateY(-3px);
         }
 
-        /* MAIN LAYOUT */
         .container {
             max-width: 1200px;
             margin: auto;
             padding: 40px 20px;
             display: grid;
-            grid-template-columns: 1fr 350px; /* Grid for Menu and Cart */
+            grid-template-columns: 1fr 350px;
             gap: 30px;
         }
 
         @media (max-width: 992px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
+            .container { grid-template-columns: 1fr; }
         }
 
         .section-title {
@@ -119,7 +107,6 @@
             padding-left: 15px;
         }
 
-        /* MENU GRID */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -135,24 +122,16 @@
             transition: 0.3s;
         }
 
-        .menu-item:hover {
-            transform: translateY(-5px);
-        }
+        .menu-item:hover { transform: translateY(-5px); }
 
         .menu-item img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
         }
 
-        .menu-content {
-            padding: 20px;
-        }
-
-        .menu-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
+        .menu-content { padding: 20px; }
+        .menu-content h3 { font-size: 1.1rem; margin-bottom: 5px; }
 
         .price {
             color: var(--primary-color);
@@ -174,17 +153,9 @@
             transition: 0.3s;
         }
 
-        .add-btn:hover {
-            background: var(--primary-color);
-        }
+        .add-btn:hover { background: var(--primary-color); }
 
-        /* CART STICKY SIDEBAR */
-        .cart-sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-
+        .cart-sidebar { position: sticky; top: 100px; height: fit-content; }
         .cart {
             background: #fff;
             padding: 25px;
@@ -192,23 +163,12 @@
             box-shadow: var(--shadow);
         }
 
-        .cart h2 {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        #cartItems {
-            list-style: none;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
+        #cartItems { list-style: none; max-height: 300px; overflow-y: auto; }
         .cart-li {
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
-            border-bottom: 1px border #eee;
+            border-bottom: 1px solid #eee;
             font-size: 0.9rem;
         }
 
@@ -234,7 +194,6 @@
             cursor: pointer;
         }
 
-        /* FOOTER */
         footer {
             background: var(--dark-color);
             color: #fff;
@@ -243,7 +202,6 @@
             margin-top: 50px;
         }
 
-        /* CATEGORY LABELS */
         .category-label {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -271,36 +229,74 @@
 <div class="container" id="menu">
     <main>
         <div class="section-title">
-            <h2>Our Cuisines</h2>
+            <h2>Our Menu</h2>
         </div>
 
         <h3 class="category-label">🇳🇬 Nigerian Specials</h3>
         <div class="menu-grid">
-            <!-- Item 1 -->
+            <!-- Ewa Agoyin -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=60" alt="Ewa Agoyin">
+                <div class="menu-content">
+                    <h3>Special Ewa Agoyin</h3>
+                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Served with spicy palm oil sauce & soft agege bread.</p>
+                    <span class="price">₦2,500</span>
+                    <button class="add-btn" onclick="addToCart('Ewa Agoyin', 2500)">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Yam and Garden Egg Sauce -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1593001872095-7d5b1840846c?auto=format&fit=crop&w=500&q=60" alt="Yam and Garden Egg">
+                <div class="menu-content">
+                    <h3>Boiled Yam & Garden Egg Sauce</h3>
+                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Home-style garden egg sauce with smoked fish.</p>
+                    <span class="price">₦3,200</span>
+                    <button class="add-btn" onclick="addToCart('Yam & Garden Egg', 3200)">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Pounded Yam -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1630914441934-9f6f92d9279b?auto=format&fit=crop&w=500&q=60" alt="Pounded Yam">
+                <div class="menu-content">
+                    <h3>Pounded Yam & Egusi</h3>
+                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Smooth pounded yam with rich melon soup.</p>
+                    <span class="price">₦4,500</span>
+                    <button class="add-btn" onclick="addToCart('Pounded Yam & Egusi', 4500)">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Ofada Rice -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1541518763531-4e71597f743e?auto=format&fit=crop&w=500&q=60" alt="Ofada Rice">
+                <div class="menu-content">
+                    <h3>Ayamase & Ofada Rice</h3>
+                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Local rice served in leaves with spicy green pepper sauce.</p>
+                    <span class="price">₦4,000</span>
+                    <button class="add-btn" onclick="addToCart('Ofada Rice', 4000)">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Semovita -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=60" alt="Semovita">
+                <div class="menu-content">
+                    <h3>Semovita & Efo Riro</h3>
+                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Lightly textured semo with vegetable soup & protein.</p>
+                    <span class="price">₦3,800</span>
+                    <button class="add-btn" onclick="addToCart('Semovita', 3800)">Add to Order</button>
+                </div>
+            </div>
+
+            <!-- Jollof Rice -->
             <div class="menu-item">
                 <img src="https://images.unsplash.com/photo-1625944525533-473f1a3c5e7d?auto=format&fit=crop&w=500&q=60" alt="Jollof Rice">
                 <div class="menu-content">
-                    <h3>Smokey Jollof Rice</h3>
+                    <h3>Party Jollof Rice</h3>
+                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Smokey firewood jollof with fried plantain.</p>
                     <span class="price">₦3,500</span>
                     <button class="add-btn" onclick="addToCart('Jollof Rice', 3500)">Add to Order</button>
-                </div>
-            </div>
-            <!-- Item 2 -->
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1630914441934-9f6f92d9279b?auto=format&fit=crop&w=500&q=60" alt="Egusi">
-                <div class="menu-content">
-                    <h3>Pounded Yam & Egusi</h3>
-                    <span class="price">₦4,000</span>
-                    <button class="add-btn" onclick="addToCart('Egusi Soup', 4000)">Add to Order</button>
-                </div>
-            </div>
-            <!-- Item 3 -->
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1642162025953-78c57a97dc0b?auto=format&fit=crop&w=500&q=60" alt="Suya">
-                <div class="menu-content">
-                    <h3>Spicy Suya Platter</h3>
-                    <span class="price">₦2,500</span>
-                    <button class="add-btn" onclick="addToCart('Suya', 2500)">Add to Order</button>
                 </div>
             </div>
         </div>
@@ -315,18 +311,9 @@
                     <button class="add-btn" onclick="addToCart('Pasta', 5500)">Add to Order</button>
                 </div>
             </div>
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1604908812324-4e4c3e6b7d6d?auto=format&fit=crop&w=500&q=60" alt="Chicken">
-                <div class="menu-content">
-                    <h3>Grilled Chicken & Fries</h3>
-                    <span class="price">₦6,000</span>
-                    <button class="add-btn" onclick="addToCart('Grilled Chicken', 6000)">Add to Order</button>
-                </div>
-            </div>
         </div>
     </main>
 
-    <!-- STICKY CART SECTION -->
     <aside class="cart-sidebar">
         <div class="cart">
             <h2>Your Order</h2>
@@ -365,14 +352,13 @@
             cartItems.innerHTML = '<li style="text-align: center; color: #999; padding: 20px;">Cart is empty</li>';
         } else {
             cartItems.innerHTML = "";
-            cart.forEach((item, index) => {
+            cart.forEach((item) => {
                 const li = document.createElement("li");
                 li.className = "cart-li";
                 li.innerHTML = `<span>${item.name}</span><span>₦${item.price.toLocaleString()}</span>`;
                 cartItems.appendChild(li);
             });
         }
-
         totalSpan.textContent = total.toLocaleString();
     }
 
