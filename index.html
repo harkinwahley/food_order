@@ -3,225 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Àjọkẹ́ Kitchen | Full Experience</title>
+    <title>Àjọkẹ́ Kitchen | Order Authentic Delicacies</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #d32f2f; --secondary: #ffc107; --bg: #f8f9fa; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background: var(--bg); padding-bottom: 120px; }
+        :root { --primary: #d32f2f; --secondary: #ffc107; --dark: #1a1a1a; --bg: #fdfdfd; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: var(--bg); color: var(--dark); line-height: 1.6; }
 
-        /* HEADER */
+        /* HERO SECTION */
         header { 
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800');
-            background-size: cover; color: white; text-align: center; padding: 40px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000');
+            background-size: cover; background-position: center; color: white; text-align: center; padding: 60px 20px;
         }
+        .status-badge { background: #4CAF50; color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
 
-        /* STICKY NAV */
+        /* NAVIGATION */
         .nav-scroller {
             position: sticky; top: 0; background: white; z-index: 1000;
-            display: flex; overflow-x: auto; padding: 12px; gap: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex; overflow-x: auto; padding: 15px; gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-bottom: 1px solid #eee;
         }
         .nav-item {
-            background: #eee; border: none; padding: 8px 18px; 
-            border-radius: 20px; white-space: nowrap; font-weight: 600; cursor: pointer;
+            background: #f0f0f0; border: none; padding: 10px 20px; 
+            border-radius: 25px; white-space: nowrap; font-weight: 600; cursor: pointer; transition: 0.3s;
         }
         .nav-item.active { background: var(--primary); color: white; }
 
-        /* MENU SECTION */
-        .container { max-width: 900px; margin: auto; padding: 15px; }
-        .cat-title { margin: 25px 0 15px; color: var(--primary); border-bottom: 2px solid var(--secondary); display: inline-block; }
+        /* MENU BOXES */
+        .container { max-width: 800px; margin: auto; padding: 15px; }
+        .cat-title { margin: 40px 0 20px; color: var(--primary); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .cat-title::after { content: ""; height: 2px; background: var(--secondary); flex-grow: 1; }
         
-        .menu-list { display: flex; flex-direction: column; gap: 12px; }
+        .menu-list { display: flex; flex-direction: column; gap: 15px; }
         .menu-card {
-            background: white; border-radius: 12px; padding: 12px;
+            background: white; border-radius: 15px; padding: 15px;
             display: flex; align-items: center; justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02); border: 1px solid #f0f0f0;
         }
-        .item-info h4 { margin-bottom: 4px; font-size: 1rem; }
-        .item-info p { color: var(--primary); font-weight: bold; font-size: 0.9rem; }
+        .item-info h4 { font-size: 1.1rem; color: #333; }
+        .item-info p { color: var(--primary); font-weight: 800; margin-top: 4px; }
 
-        /* QUANTITY CONTROLS */
-        .qty-controls { display: flex; align-items: center; gap: 12px; background: #f0f0f0; padding: 5px 10px; border-radius: 8px; }
+        /* QUANTITY */
+        .qty-controls { display: flex; align-items: center; gap: 15px; background: #f8f8f8; padding: 8px 12px; border-radius: 12px; }
         .qty-btn { 
-            background: white; border: 1px solid #ddd; width: 28px; height: 28px; 
-            border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 1.1rem;
+            background: white; border: none; width: 32px; height: 32px; 
+            border-radius: 50%; cursor: pointer; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .qty-val { font-weight: bold; min-width: 15px; text-align: center; }
+        .qty-val { font-weight: bold; font-size: 1.1rem; color: var(--dark); min-width: 20px; text-align: center; }
 
-        /* CART BAR */
+        /* FOOTER INFO */
+        .business-info { background: #eee; padding: 40px 20px; text-align: center; margin-top: 50px; border-radius: 20px 20px 0 0; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 600px; margin: 20px auto; font-size: 0.9rem; }
+
+        /* CHECKOUT BAR */
         .cart-footer {
             position: fixed; bottom: 0; left: 0; right: 0; background: white;
-            padding: 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
-            display: none; flex-direction: column; gap: 12px; z-index: 2000;
+            padding: 20px; box-shadow: 0 -10px 30px rgba(0,0,0,0.15);
+            display: none; flex-direction: column; gap: 15px; z-index: 2000;
+            border-radius: 20px 20px 0 0;
         }
-        .cart-meta { display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; }
-        .mode-selector { display: flex; gap: 15px; justify-content: center; background: #f9f9f9; padding: 8px; border-radius: 8px; }
+        .cart-meta { display: flex; justify-content: space-between; align-items: center; }
+        .total-price { font-size: 1.4rem; font-weight: 900; color: var(--primary); }
         
+        .mode-selector { display: flex; background: #f0f0f0; padding: 5px; border-radius: 12px; }
+        .mode-selector label { flex: 1; text-align: center; padding: 10px; cursor: pointer; border-radius: 10px; font-weight: bold; transition: 0.3s; }
+        .mode-selector input { display: none; }
+        .mode-selector input:checked + span { background: white; display: block; padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
         .whatsapp-btn {
-            background: #25D366; color: white; text-align: center; padding: 15px;
-            border-radius: 10px; text-decoration: none; font-weight: bold;
+            background: #25D366; color: white; text-align: center; padding: 18px;
+            border-radius: 15px; text-decoration: none; font-weight: bold; font-size: 1.1rem;
             display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
-        /* CUSTOM UTILS */
-        .badge { background: var(--secondary); font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-left: 5px; }
+        /* WHATSAPP FLOATING BUTTON */
+        .fab-whatsapp {
+            position: fixed; bottom: 150px; right: 20px; background: #25D366;
+            color: white; width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 999;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Àjọkẹ́ Kitchen</h1>
-    <p>Premium Nigerian & Continental Dining</p>
+    <span class="status-badge">● NOW OPEN</span>
+    <h1 style="margin-top: 10px; font-size: 2.5rem;">Àjọkẹ́ Kitchen</h1>
+    <p>Authentic Nigerian Taste • Delivered Fast</p>
 </header>
 
 <div class="nav-scroller">
-    <button class="nav-item active" onclick="jump('yoruba')">Yoruba</button>
-    <button class="nav-item" onclick="jump('calabar')">Calabar</button>
+    <button class="nav-item active" onclick="jump('yoruba')">Yoruba Menu</button>
+    <button class="nav-item" onclick="jump('calabar')">Calabar Kitchen</button>
     <button class="nav-item" onclick="jump('proteins')">Proteins</button>
     <button class="nav-item" onclick="jump('drinks')">Drinks & Dairy</button>
 </div>
 
 <div class="container">
-    <!-- YORUBA DISHES -->
-    <h3 class="cat-title" id="yoruba">Yoruba Specialties</h3>
-    <div class="menu-list">
-        <!-- Using a function to generate items for cleaner code -->
-        <script>
-            const menuData = {
-                yoruba: [
-                    {n: "Amala & Abula", p: 3500},
-                    {n: "Pounded Yam", p: 1500},
-                    {n: "Semovita", p: 1200},
-                    {n: "Eba (Yellow/White)", p: 1000},
-                    {n: "Pupuru", p: 1500},
-                    {n: "Iyan-Ado (Special)", p: 2000}
-                ],
-                calabar: [
-                    {n: "Edikaikong Soup", p: 5000},
-                    {n: "Afang Soup", p: 5000},
-                    {n: "Fisherman Soup", p: 6500},
-                    {n: "Atama Soup", p: 4500},
-                    {n: "Ekpang Nkukwo", p: 5500}
-                ],
-                proteins: [
-                    {n: "Fried Chicken", p: 1500},
-                    {n: "Fried Turkey", p: 3000},
-                    {n: "Peppered Gizzard", p: 2500},
-                    {n: "Assorted Meat", p: 1200},
-                    {n: "Grilled Catfish", p: 7000},
-                    {n: "Boiled Egg", p: 300}
-                ],
-                drinks: [
-                    {n: "Fresh Yoghurt (50cl)", p: 1500},
-                    {n: "Zobo Drink (House Blend)", p: 800},
-                    {n: "Bottled Water", p: 300},
-                    {n: "Coke / Fanta / Sprite", p: 500},
-                    {n: "Hollandia Yoghurt", p: 2500},
-                    {n: "Maltina", p: 700}
-                ]
-            };
+    <div id="menu-container">
+        <!-- JavaScript will inject menu here -->
+    </div>
 
-            for (const [cat, items] of Object.entries(menuData)) {
-                if(cat !== 'yoruba') document.write(`<h3 class="cat-title" id="${cat}">${cat.charAt(0).toUpperCase() + cat.slice(1)}</h3><div class="menu-list">`);
-                items.forEach(item => {
-                    document.write(`
-                        <div class="menu-card">
-                            <div class="item-info">
-                                <h4>${item.n}</h4>
-                                <p>₦${item.p.toLocaleString()}</p>
-                            </div>
-                            <div class="qty-controls">
-                                <button class="qty-btn" onclick="updateQty('${item.n}', ${item.p}, -1)">-</button>
-                                <span class="qty-val" id="qty-${item.n}">0</span>
-                                <button class="qty-btn" onclick="updateQty('${item.n}', ${item.p}, 1)">+</button>
-                            </div>
-                        </div>
-                    `);
-                });
-                document.write(`</div>`);
-            }
-        </script>
+    <div class="business-info">
+        <h3>Store Information</h3>
+        <div class="info-grid">
+            <div>
+                <i class="fas fa-map-marker-alt"></i><br>
+                <strong>Location</strong><br>
+                Lagos, Nigeria
+            </div>
+            <div>
+                <i class="fas fa-clock"></i><br>
+                <strong>Opening Hours</strong><br>
+                Mon - Sat: 9am - 9pm
+            </div>
+        </div>
+        <p style="font-size: 0.8rem; color: #888;">© 2026 Àjọkẹ́ Kitchen. All Rights Reserved.</p>
     </div>
 </div>
+
+<!-- Support Button -->
+<a href="https://wa.me/2349063858297?text=Hello, I have a question about your menu." class="fab-whatsapp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <div class="cart-footer" id="cartFooter">
     <div class="mode-selector">
-        <label><input type="radio" name="delivery" value="Delivery" checked> 🏍️ Delivery</label>
-        <label><input type="radio" name="delivery" value="Pick-up"> 🥡 Pick-up</label>
+        <label>
+            <input type="radio" name="delivery" value="Delivery" checked>
+            <span>🏍️ Delivery</span>
+        </label>
+        <label>
+            <input type="radio" name="delivery" value="Pick-up">
+            <span>🥡 Pick-up</span>
+        </label>
     </div>
+    
     <div class="cart-meta">
-        <span>Total: ₦<span id="displayTotal">0</span></span>
-        <span id="displayCount">0 Items</span>
+        <div>
+            <span id="displayCount" style="font-weight: bold; color: #666;">0 Items</span><br>
+            <span class="total-price">₦<span id="displayTotal">0</span></span>
+        </div>
+        <a href="#" class="whatsapp-btn" onclick="checkout()">
+            ORDER NOW <i class="fas fa-paper-plane"></i>
+        </a>
     </div>
-    <a href="#" class="whatsapp-btn" onclick="checkout()">
-        <i class="fab fa-whatsapp"></i> SEND ORDER TO WHATSAPP
-    </a>
 </div>
 
 <script>
+    const menuData = {
+        yoruba: [
+            {n: "Amala & Abula", p: 3500}, {n: "Pounded Yam", p: 1500},
+            {n: "Semovita", p: 1200}, {n: "Eba (Yellow/White)", p: 1000},
+            {n: "Pupuru", p: 1500}, {n: "Iyan-Ado (Special)", p: 2000}
+        ],
+        calabar: [
+            {n: "Edikaikong Soup", p: 5000}, {n: "Afang Soup", p: 5000},
+            {n: "Fisherman Soup", p: 6500}, {n: "Ekpang Nkukwo", p: 5500}
+        ],
+        proteins: [
+            {n: "Fried Chicken", p: 1500}, {n: "Fried Turkey", p: 3000},
+            {n: "Peppered Gizzard", p: 2500}, {n: "Assorted Meat", p: 1200},
+            {n: "Grilled Catfish", p: 7000}
+        ],
+        drinks: [
+            {n: "Fresh Yoghurt (50cl)", p: 1500}, {n: "Zobo Drink", p: 800},
+            {n: "Bottled Water", p: 300}, {n: "Coke/Fanta", p: 500}, {n: "Maltina", p: 700}
+        ]
+    };
+
     let cart = {};
-    let grandTotal = 0;
+    const menuContainer = document.getElementById('menu-container');
+
+    // Generate Menu HTML
+    for (const [cat, items] of Object.entries(menuData)) {
+        let html = `<h3 class="cat-title" id="${cat}">${cat.replace(/^\w/, c => c.toUpperCase())}</h3><div class="menu-list">`;
+        items.forEach(item => {
+            html += `
+                <div class="menu-card">
+                    <div class="item-info">
+                        <h4>${item.n}</h4>
+                        <p>₦${item.p.toLocaleString()}</p>
+                    </div>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="updateQty('${item.n}', ${item.p}, -1)">-</button>
+                        <span class="qty-val" id="qty-${item.n}">0</span>
+                        <button class="qty-btn" onclick="updateQty('${item.n}', ${item.p}, 1)">+</button>
+                    </div>
+                </div>`;
+        });
+        html += `</div>`;
+        menuContainer.innerHTML += html;
+    }
 
     function updateQty(name, price, change) {
         if (!cart[name]) cart[name] = { qty: 0, price: price };
-        
         cart[name].qty += change;
         if (cart[name].qty < 0) cart[name].qty = 0;
-        
-        // Update Individual Display
         document.getElementById(`qty-${name}`).innerText = cart[name].qty;
-        
-        calculateTotals();
+        renderCartBar();
     }
 
-    function calculateTotals() {
-        grandTotal = 0;
-        let itemCount = 0;
-        
+    function renderCartBar() {
+        let total = 0, count = 0;
         for (const item in cart) {
-            grandTotal += (cart[item].qty * cart[item].price);
-            itemCount += cart[item].qty;
+            total += (cart[item].qty * cart[item].price);
+            count += cart[item].qty;
         }
-
-        const footer = document.getElementById('cartFooter');
-        if (itemCount > 0) {
-            footer.style.display = 'flex';
-        } else {
-            footer.style.display = 'none';
-        }
-
-        document.getElementById('displayTotal').innerText = grandTotal.toLocaleString();
-        document.getElementById('displayCount').innerText = itemCount + " Items";
+        document.getElementById('cartFooter').style.display = count > 0 ? 'flex' : 'none';
+        document.getElementById('displayTotal').innerText = total.toLocaleString();
+        document.getElementById('displayCount').innerText = count + " Items";
     }
 
     function jump(id) {
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
         document.querySelectorAll('.nav-item').forEach(btn => {
-            btn.classList.remove('active');
-            if(btn.innerText.toLowerCase().includes(id.substring(0,3))) btn.classList.add('active');
+            btn.classList.toggle('active', btn.innerText.toLowerCase().includes(id.substring(0,3)));
         });
     }
 
     function checkout() {
-        const phone = "2348000000000"; // SET YOUR NUMBER HERE
+        const phone = "2349063858297"; 
         const mode = document.querySelector('input[name="delivery"]:checked').value;
-        
-        let msg = `*NEW ORDER FROM ÀJỌKẸ́ KITCHEN*%0A`;
+        let total = 0;
+        let msg = `*NEW ORDER - ÀJỌKẸ́ KITCHEN*%0A`;
         msg += `--------------------------%0A`;
-        
         for (const name in cart) {
             if (cart[name].qty > 0) {
-                msg += `✅ ${cart[name].qty}x ${name} (₦${(cart[name].qty * cart[name].price).toLocaleString()})%0A`;
+                let sub = cart[name].qty * cart[name].price;
+                msg += `✅ ${cart[name].qty}x ${name} (₦${sub.toLocaleString()})%0A`;
+                total += sub;
             }
         }
-        
-        msg += `--------------------------%0A`;
-        msg += `*GRAND TOTAL: ₦${grandTotal.toLocaleString()}*%0A`;
-        msg += `*METHOD:* ${mode}%0A`;
-        msg += `--------------------------%0A`;
-        msg += `_Please provide your address if for delivery._`;
-
+        msg += `--------------------------%0A*TOTAL: ₦${total.toLocaleString()}*%0A*METHOD:* ${mode}%0A--------------------------%0A_Customer, please reply with your address._`;
         window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
     }
 </script>
