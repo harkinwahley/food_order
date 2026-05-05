@@ -19,7 +19,6 @@
         html { scroll-behavior: smooth; }
         body { background: var(--bg); color: #333; }
 
-        /* NAVIGATION */
         nav {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -36,13 +35,12 @@
 
         .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary); }
 
-        /* HERO SECTION - Updated Background */
         header {
             height: 70vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
-            background-position: center 30%;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -52,14 +50,7 @@
         }
 
         .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 10vw, 4.5rem); margin-bottom: 10px; }
-        .cta-btn { 
-            background: var(--primary); color: white; padding: 15px 40px; 
-            text-decoration: none; border-radius: 50px; font-weight: 600; 
-            display: inline-block; transition: 0.3s;
-        }
-        .cta-btn:hover { transform: scale(1.05); background: #a93226; }
-
-        /* MAIN LAYOUT */
+        
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -71,7 +62,6 @@
 
         @media (max-width: 992px) { .container { grid-template-columns: 1fr; } }
 
-        /* MENU CARDS */
         .category-title { margin: 30px 0 20px; font-family: 'Playfair Display', serif; font-size: 2rem; }
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
         
@@ -80,7 +70,7 @@
             box-shadow: var(--card-shadow); transition: 0.3s;
         }
         .menu-item:hover { transform: translateY(-10px); }
-        .menu-item img { width: 100%; height: 220px; object-fit: cover; background: #eee; }
+        .menu-item img { width: 100%; height: 220px; object-fit: cover; background: #eee; display: block; }
         
         .menu-content { padding: 20px; }
         .price { color: var(--primary); font-weight: 700; font-size: 1.3rem; margin: 10px 0; display: block; }
@@ -91,37 +81,9 @@
         }
         .add-btn:hover { background: var(--primary); }
 
-        /* CART SIDEBAR */
-        .cart-box { 
-            position: sticky; top: 100px; background: white; padding: 25px; 
-            border-radius: 20px; box-shadow: var(--card-shadow); 
-        }
-        .cart-item { 
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem;
-        }
-        .remove-btn { color: #ccc; cursor: pointer; border: none; background: none; font-size: 1.2rem; }
-        .remove-btn:hover { color: var(--primary); }
-        
-        .total-row { 
-            margin-top: 20px; padding-top: 15px; border-top: 2px solid #eee;
-            display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem;
-        }
-
-        .checkout-btn { 
-            width: 100%; margin-top: 20px; padding: 15px; border: none; 
-            border-radius: 12px; background: var(--success); color: white; 
-            font-weight: 700; cursor: pointer; 
-        }
-
-        /* TOAST NOTIFICATION */
-        #toast {
-            position: fixed; bottom: 20px; right: 20px; background: var(--dark);
-            color: white; padding: 15px 25px; border-radius: 10px;
-            display: none; animation: slideIn 0.3s; z-index: 2000;
-        }
-
-        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+        .cart-box { position: sticky; top: 100px; background: white; padding: 25px; border-radius: 20px; box-shadow: var(--card-shadow); }
+        .total-row { margin-top: 20px; padding-top: 15px; border-top: 2px solid #eee; display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; }
+        .checkout-btn { width: 100%; margin-top: 20px; padding: 15px; border: none; border-radius: 12px; background: var(--success); color: white; font-weight: 700; cursor: pointer; }
 
         footer { background: var(--dark); color: #777; text-align: center; padding: 40px; margin-top: 60px; }
     </style>
@@ -136,8 +98,7 @@
 <header>
     <div class="hero-content">
         <h1>Deliciously Authentic</h1>
-        <p>Experience the finest Nigerian flavors in Lagos.</p><br>
-        <a href="#menu" class="cta-btn">Start Your Order</a>
+        <p>The soul of Nigerian cooking, served fresh.</p>
     </div>
 </header>
 
@@ -146,8 +107,8 @@
         <h2 class="category-title">🇳🇬 Nigerian Classics</h2>
         <div class="menu-grid">
             <div class="menu-item">
-                <!-- Updated Party Jollof Image -->
-                <img src="https://images.unsplash.com/photo-1625944525533-473f1a3c5e7d?auto=format&fit=crop&w=600&q=80" alt="Jollof">
+                <!-- NEW JOLLOF IMAGE LINK -->
+                <img src="https://images.unsplash.com/photo-1628143870430-802f06b9b8b0?auto=format&fit=crop&w=800&q=80" alt="Party Jollof Rice">
                 <div class="menu-content">
                     <h3>Party Jollof Rice</h3>
                     <span class="price">₦3,500</span>
@@ -171,48 +132,19 @@
                 </div>
             </div>
         </div>
-
-        <h2 class="category-title">🌍 Intercontinental</h2>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600&q=80" alt="Pasta">
-                <div class="menu-content">
-                    <h3>Seafood Pasta</h3>
-                    <span class="price">₦6,500</span>
-                    <button class="add-btn" onclick="addToCart('Seafood Pasta', 6500)">Add to Cart</button>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80" alt="Chicken">
-                <div class="menu-content">
-                    <h3>Grilled Chicken & Chips</h3>
-                    <span class="price">₦5,500</span>
-                    <button class="add-btn" onclick="addToCart('Grilled Chicken', 5500)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
     </main>
 
     <aside>
         <div class="cart-box">
             <h2 style="margin-bottom: 20px;">Your Basket</h2>
-            <div id="cartItems">
-                <p style="text-align: center; color: #999;">Basket is empty</p>
-            </div>
-            <div class="total-row">
-                <span>Total</span>
-                <span>₦<span id="total">0</span></span>
-            </div>
+            <div id="cartItems"><p style="text-align: center; color: #999;">Basket is empty</p></div>
+            <div class="total-row"><span>Total</span><span>₦<span id="total">0</span></span></div>
             <button class="checkout-btn" onclick="checkout()">Checkout Now</button>
         </div>
     </aside>
 </div>
 
-<div id="toast">Added to cart! 😋</div>
-
-<footer>
-    <p>© 2026 Àjọkẹ́ Kitchen | Victoria Island, Lagos</p>
-</footer>
+<footer><p>© 2026 Àjọkẹ́ Kitchen | Victoria Island, Lagos</p></footer>
 
 <script>
     let cart = [];
@@ -222,51 +154,25 @@
         cart.push({ name, price, id: Date.now() });
         total += price;
         updateUI();
-        showToast(name);
-    }
-
-    function removeItem(id, price) {
-        cart = cart.filter(item => item.id !== id);
-        total -= price;
-        updateUI();
     }
 
     function updateUI() {
         const cartContainer = document.getElementById("cartItems");
         const totalDisplay = document.getElementById("total");
-        const counter = document.getElementById("cart-counter");
-
-        counter.innerText = `🛒 Items: ${cart.length}`;
+        document.getElementById("cart-counter").innerText = `🛒 Items: ${cart.length}`;
         
         if (cart.length === 0) {
             cartContainer.innerHTML = '<p style="text-align: center; color: #999;">Basket is empty</p>';
         } else {
-            cartContainer.innerHTML = cart.map(item => `
-                <div class="cart-item">
-                    <span>${item.name}</span>
-                    <div>
-                        <span>₦${item.price.toLocaleString()}</span>
-                        <button class="remove-btn" onclick="removeItem(${item.id}, ${item.price})">×</button>
-                    </div>
-                </div>
-            `).join('');
+            cartContainer.innerHTML = cart.map(item => `<div style="display:flex; justify-content:space-between; padding:5px 0;"><span>${item.name}</span><span>₦${item.price.toLocaleString()}</span></div>`).join('');
         }
         totalDisplay.innerText = total.toLocaleString();
     }
 
-    function showToast(name) {
-        const toast = document.getElementById("toast");
-        toast.innerText = `${name} added! 😋`;
-        toast.style.display = "block";
-        setTimeout(() => { toast.style.display = "none"; }, 2000);
-    }
-
     function checkout() {
-        if(cart.length === 0) return alert("Your basket is empty!");
-        alert(`Order confirmed! Total: ₦${total.toLocaleString()}\nPreparing your meal...`);
-        cart = [];
-        total = 0;
-        updateUI();
+        if(cart.length === 0) return alert("Basket is empty!");
+        alert("Order placed successfully!");
+        cart = []; total = 0; updateUI();
     }
 </script>
 
