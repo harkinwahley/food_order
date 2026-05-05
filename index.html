@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Àjọkẹ́ Kitchen | Modern Nigerian Dining</title>
+    <title>Àjọkẹ́ Kitchen | The Heritage Selection</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #c0392b;
-            --success: #27ae60;
+            --primary: #006633; /* Nigerian Green */
+            --accent: #d4af37; /* Royal Gold */
             --dark: #1a1a1a;
-            --bg: #fdfdfd;
-            --card-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            --bg: #f9f7f2; 
+            --card-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: #333; }
+        body { background: var(--bg); color: #2c2c2c; }
 
+        /* NAVIGATION */
         nav {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            padding: 1rem 5%;
+            padding: 1.2rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -30,15 +31,17 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary); }
+        #cart-counter { font-weight: 600; color: var(--primary); background: #e8f5e9; padding: 8px 15px; border-radius: 20px; }
 
+        /* HERO SECTION */
         header {
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80');
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -46,89 +49,126 @@
             justify-content: center;
             text-align: center;
             color: white;
-            margin-top: 60px;
+            margin-top: 0;
         }
 
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 10vw, 4.5rem); margin-bottom: 10px; }
-        
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4rem); }
+        .hero-content p { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
+
+        /* MAIN LAYOUT */
         .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1300px;
+            margin: 60px auto;
+            padding: 0 4%;
             display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 40px;
+            grid-template-columns: 1fr 380px;
+            gap: 50px;
         }
 
-        @media (max-width: 992px) { .container { grid-template-columns: 1fr; } }
+        @media (max-width: 1100px) { .container { grid-template-columns: 1fr; } }
 
-        .category-title { margin: 30px 0 20px; font-family: 'Playfair Display', serif; font-size: 2rem; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .category-title { 
+            margin: 40px 0 30px; 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.2rem; 
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 35px; }
         
         .menu-item { 
-            background: white; border-radius: 20px; overflow: hidden; 
-            box-shadow: var(--card-shadow); transition: 0.3s;
+            background: white; border-radius: 0; overflow: hidden; 
+            box-shadow: var(--card-shadow); transition: 0.4s ease;
+            border: 1px solid #eee;
         }
         .menu-item:hover { transform: translateY(-10px); }
-        .menu-item img { width: 100%; height: 220px; object-fit: cover; background: #eee; display: block; }
+        .menu-item img { width: 100%; height: 250px; object-fit: cover; }
         
-        .menu-content { padding: 20px; }
-        .price { color: var(--primary); font-weight: 700; font-size: 1.3rem; margin: 10px 0; display: block; }
+        .menu-content { padding: 25px; text-align: center; }
+        .menu-content h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 8px; }
+        .price { color: var(--primary); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; display: block; }
         
         .add-btn { 
-            width: 100%; padding: 12px; border: none; border-radius: 12px; 
-            background: var(--dark); color: white; font-weight: 600; cursor: pointer; transition: 0.2s;
+            width: 100%; padding: 12px; border: 1px solid var(--primary);
+            background: transparent; color: var(--primary); font-weight: 600; cursor: pointer; 
+            transition: 0.3s; text-transform: uppercase; font-size: 0.8rem;
         }
-        .add-btn:hover { background: var(--primary); }
+        .add-btn:hover { background: var(--primary); color: white; }
 
-        .cart-box { position: sticky; top: 100px; background: white; padding: 25px; border-radius: 20px; box-shadow: var(--card-shadow); }
-        .total-row { margin-top: 20px; padding-top: 15px; border-top: 2px solid #eee; display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; }
-        .checkout-btn { width: 100%; margin-top: 20px; padding: 15px; border: none; border-radius: 12px; background: var(--success); color: white; font-weight: 700; cursor: pointer; }
+        /* CART SIDEBAR */
+        .cart-box { 
+            position: sticky; top: 120px; background: white; padding: 40px; 
+            border-radius: 0; box-shadow: var(--card-shadow); border-top: 4px solid var(--primary);
+        }
+        .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+        .total-row { margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--dark); display: flex; justify-content: space-between; font-weight: 700; font-size: 1.3rem; }
 
-        footer { background: var(--dark); color: #777; text-align: center; padding: 40px; margin-top: 60px; }
+        .checkout-btn { 
+            width: 100%; margin-top: 30px; padding: 18px; border: none; 
+            background: var(--primary); color: white; font-weight: 700; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        footer { background: var(--dark); color: #777; text-align: center; padding: 60px 20px; margin-top: 80px; }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="logo">Àjọkẹ́ Kitchen</div>
-    <div id="cart-counter">🛒 Items: 0</div>
+    <div id="cart-counter">🛒 0 Items</div>
 </nav>
 
 <header>
     <div class="hero-content">
-        <h1>Deliciously Authentic</h1>
-        <p>The soul of Nigerian cooking, served fresh.</p>
+        <h1>Authentic Flavours</h1>
+        <p>From the heart of Lagos to your table</p>
     </div>
 </header>
 
 <div class="container" id="menu">
     <main>
-        <h2 class="category-title">🇳🇬 Nigerian Classics</h2>
+        <h2 class="category-title">The Classics</h2>
         <div class="menu-grid">
+            <!-- Jollof Rice -->
             <div class="menu-item">
-                <!-- NEW JOLLOF IMAGE LINK -->
-                <img src="https://images.unsplash.com/photo-1628143870430-802f06b9b8b0?auto=format&fit=crop&w=800&q=80" alt="Party Jollof Rice">
+                <img src="https://images.unsplash.com/photo-1628143870430-802f06b9b8b0?auto=format&fit=crop&w=800&q=80" alt="Party Jollof">
                 <div class="menu-content">
                     <h3>Party Jollof Rice</h3>
                     <span class="price">₦3,500</span>
-                    <button class="add-btn" onclick="addToCart('Party Jollof', 3500)">Add to Cart</button>
+                    <button class="add-btn" onclick="addToCart('Party Jollof Rice', 3500)">Add to Selection</button>
                 </div>
             </div>
+
+            <!-- Ewa Agoyin -->
             <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=600&q=80" alt="Egusi">
+                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80" alt="Ewa Agoyin">
+                <div class="menu-content">
+                    <h3>Ewa Agoyin & Fried Fish</h3>
+                    <span class="price">₦3,000</span>
+                    <button class="add-btn" onclick="addToCart('Ewa Agoyin', 3000)">Add to Selection</button>
+                </div>
+            </div>
+
+            <!-- Yam and Egg -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&w=800&q=80" alt="Yam and Egg">
+                <div class="menu-content">
+                    <h3>Boiled Yam & Egg Sauce</h3>
+                    <span class="price">₦3,200</span>
+                    <button class="add-btn" onclick="addToCart('Yam & Egg Sauce', 3200)">Add to Selection</button>
+                </div>
+            </div>
+
+            <!-- Egusi Royale -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=800&q=80" alt="Egusi">
                 <div class="menu-content">
                     <h3>Egusi & Pounded Yam</h3>
                     <span class="price">₦4,500</span>
-                    <button class="add-btn" onclick="addToCart('Egusi Soup', 4500)">Add to Cart</button>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Suya">
-                <div class="menu-content">
-                    <h3>Beef Suya Platter</h3>
-                    <span class="price">₦2,800</span>
-                    <button class="add-btn" onclick="addToCart('Beef Suya', 2800)">Add to Cart</button>
+                    <button class="add-btn" onclick="addToCart('Egusi Royale', 4500)">Add to Selection</button>
                 </div>
             </div>
         </div>
@@ -136,22 +176,24 @@
 
     <aside>
         <div class="cart-box">
-            <h2 style="margin-bottom: 20px;">Your Basket</h2>
-            <div id="cartItems"><p style="text-align: center; color: #999;">Basket is empty</p></div>
+            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 20px;">Your Selection</h2>
+            <div id="cartItems"><p style="text-align: center; color: #999;">Select your meal</p></div>
             <div class="total-row"><span>Total</span><span>₦<span id="total">0</span></span></div>
-            <button class="checkout-btn" onclick="checkout()">Checkout Now</button>
+            <button class="checkout-btn" onclick="checkout()">Complete Order</button>
         </div>
     </aside>
 </div>
 
-<footer><p>© 2026 Àjọkẹ́ Kitchen | Victoria Island, Lagos</p></footer>
+<footer>
+    <p>© 2026 Àjọkẹ́ Kitchen | Victoria Island, Lagos</p>
+</footer>
 
 <script>
     let cart = [];
     let total = 0;
 
     function addToCart(name, price) {
-        cart.push({ name, price, id: Date.now() });
+        cart.push({ name, price });
         total += price;
         updateUI();
     }
@@ -159,19 +201,23 @@
     function updateUI() {
         const cartContainer = document.getElementById("cartItems");
         const totalDisplay = document.getElementById("total");
-        document.getElementById("cart-counter").innerText = `🛒 Items: ${cart.length}`;
+        document.getElementById("cart-counter").innerText = `🛒 ${cart.length} Items`;
         
         if (cart.length === 0) {
-            cartContainer.innerHTML = '<p style="text-align: center; color: #999;">Basket is empty</p>';
+            cartContainer.innerHTML = '<p style="text-align: center; color: #999;">Select your meal</p>';
         } else {
-            cartContainer.innerHTML = cart.map(item => `<div style="display:flex; justify-content:space-between; padding:5px 0;"><span>${item.name}</span><span>₦${item.price.toLocaleString()}</span></div>`).join('');
+            cartContainer.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <span>${item.name}</span>
+                    <span>₦${item.price.toLocaleString()}</span>
+                </div>`).join('');
         }
         totalDisplay.innerText = total.toLocaleString();
     }
 
     function checkout() {
-        if(cart.length === 0) return alert("Basket is empty!");
-        alert("Order placed successfully!");
+        if(cart.length === 0) return alert("Please select a dish.");
+        alert("E se! Your authentic Nigerian meal is being prepared.");
         cart = []; total = 0; updateUI();
     }
 </script>
