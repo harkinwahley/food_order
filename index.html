@@ -268,63 +268,64 @@
     </div>
 </header>
 
-<div class="container" id="menu">
     <main>
-        <div class="section-title">
-            <h2>Our Cuisines</h2>
-        </div>
+    <div class="section-title">
+        <h2>Our Cuisines</h2>
+    </div>
 
-        <h3 class="category-label">🇳🇬 Nigerian Specials</h3>
-        <div class="menu-grid">
-            <!-- Item 1 -->
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1625944525533-473f1a3c5e7d?auto=format&fit=crop&w=500&q=60" alt="Jollof Rice">
-                <div class="menu-content">
-                    <h3>Smokey Jollof Rice</h3>
-                    <span class="price">₦3,500</span>
-                    <button class="add-btn" onclick="addToCart('Jollof Rice', 3500)">Add to Order</button>
-                </div>
-            </div>
-            <!-- Item 2 -->
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1630914441934-9f6f92d9279b?auto=format&fit=crop&w=500&q=60" alt="Egusi">
-                <div class="menu-content">
-                    <h3>Pounded Yam & Egusi</h3>
-                    <span class="price">₦4,000</span>
-                    <button class="add-btn" onclick="addToCart('Egusi Soup', 4000)">Add to Order</button>
-                </div>
-            </div>
-            <!-- Item 3 -->
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1642162025953-78c57a97dc0b?auto=format&fit=crop&w=500&q=60" alt="Suya">
-                <div class="menu-content">
-                    <h3>Spicy Suya Platter</h3>
-                    <span class="price">₦2,500</span>
-                    <button class="add-btn" onclick="addToCart('Suya', 2500)">Add to Order</button>
-                </div>
+    <h3 class="category-label">🇳🇬 Nigerian Specials</h3>
+    <div class="menu-grid">
+        <!-- Item 1: Jollof -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?auto=format&fit=crop&w=600&q=80" alt="Jollof Rice" loading="lazy">
+            <div class="menu-content">
+                <h3>Smokey Jollof Rice</h3>
+                <span class="price">₦3,500</span>
+                <button class="add-btn" onclick="addToCart('Jollof Rice', 3500)">Add to Order</button>
             </div>
         </div>
+        <!-- Item 2: Egusi -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Egusi" loading="lazy">
+            <div class="menu-content">
+                <h3>Pounded Yam & Egusi</h3>
+                <span class="price">₦4,000</span>
+                <button class="add-btn" onclick="addToCart('Egusi Soup', 4000)">Add to Order</button>
+            </div>
+        </div>
+        <!-- Item 3: Suya -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Suya" loading="lazy">
+            <div class="menu-content">
+                <h3>Spicy Suya Platter</h3>
+                <span class="price">₦2,500</span>
+                <button class="add-btn" onclick="addToCart('Suya', 2500)">Add to Order</button>
+            </div>
+        </div>
+    </div>
 
-        <h3 class="category-label">🌍 Intercontinental</h3>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=60" alt="Pasta">
-                <div class="menu-content">
-                    <h3>Creamy Alfredo Pasta</h3>
-                    <span class="price">₦5,500</span>
-                    <button class="add-btn" onclick="addToCart('Pasta', 5500)">Add to Order</button>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1604908812324-4e4c3e6b7d6d?auto=format&fit=crop&w=500&q=60" alt="Chicken">
-                <div class="menu-content">
-                    <h3>Grilled Chicken & Fries</h3>
-                    <span class="price">₦6,000</span>
-                    <button class="add-btn" onclick="addToCart('Grilled Chicken', 6000)">Add to Order</button>
-                </div>
+    <h3 class="category-label">🌍 Intercontinental</h3>
+    <div class="menu-grid">
+        <!-- Item 4: Pasta -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1645112481338-316279f64481?auto=format&fit=crop&w=600&q=80" alt="Pasta" loading="lazy">
+            <div class="menu-content">
+                <h3>Creamy Alfredo Pasta</h3>
+                <span class="price">₦5,500</span>
+                <button class="add-btn" onclick="addToCart('Pasta', 5500)">Add to Order</button>
             </div>
         </div>
-    </main>
+        <!-- Item 5: Chicken & Fries -->
+        <div class="menu-item">
+            <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80" alt="Chicken" loading="lazy">
+            <div class="menu-content">
+                <h3>Grilled Chicken & Fries</h3>
+                <span class="price">₦6,000</span>
+                <button class="add-btn" onclick="addToCart('Grilled Chicken', 6000)">Add to Order</button>
+            </div>
+        </div>
+    </div>
+</main>
 
     <!-- STICKY CART SECTION -->
     <aside class="cart-sidebar">
