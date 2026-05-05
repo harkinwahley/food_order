@@ -3,389 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Àjọkẹ́ Kitchen | Fine Dining</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Àjọkẹ́ Kitchen | Modern Nigerian Dining</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --accent: #d4af37; /* Gold */
-            --primary: #1a1a1a; /* Deep Charcoal */
-            --text-light: #f4f4f4;
-            --text-dark: #333;
-            --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --primary: #c0392b;
+            --success: #27ae60;
+            --dark: #1a1a1a;
+            --bg: #fdfdfd;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        body {
-            background-color: #fafafa;
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: #333; }
 
         /* NAVIGATION */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 8%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.98);
+            position: fixed;
+            width: 100%;
+            top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            letter-spacing: 3px;
-            color: var(--primary);
-            text-transform: uppercase;
-        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary); }
 
         /* HERO SECTION */
         header {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                        url("https://images.unsplash.com/photo-1550966841-3ee3ad46f041?auto=format&fit=crop&w=1920&q=80");
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--text-light);
+            color: white;
+            margin-top: 60px;
         }
 
-        .hero-box h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            margin-bottom: 1rem;
-            letter-spacing: 5px;
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 10vw, 4rem); margin-bottom: 10px; }
+        .cta-btn { 
+            background: var(--primary); color: white; padding: 15px 40px; 
+            text-decoration: none; border-radius: 50px; font-weight: 600; 
+            display: inline-block; transition: 0.3s;
         }
+        .cta-btn:hover { transform: scale(1.05); background: #a93226; }
 
-        .hero-box p {
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-btn {
-            padding: 15px 40px;
-            border: 1px solid var(--accent);
-            background: transparent;
-            color: var(--white);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            transition: var(--transition);
-        }
-
-        .cta-btn:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        /* LAYOUT */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 80px 5%;
+        /* MAIN LAYOUT */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
             display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 50px;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
         }
 
-        @media (max-width: 1100px) {
-            .main-content { grid-template-columns: 1fr; }
-        }
-
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: var(--accent);
-        }
+        @media (max-width: 992px) { .container { grid-template-columns: 1fr; } }
 
         /* MENU CARDS */
-        .category-header {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            margin: 40px 0 20px;
-            color: var(--accent);
-            text-transform: uppercase;
+        .category-title { margin: 30px 0 20px; font-family: 'Playfair Display', serif; font-size: 2rem; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        
+        .menu-item { 
+            background: white; border-radius: 20px; overflow: hidden; 
+            box-shadow: var(--card-shadow); transition: 0.3s;
+        }
+        .menu-item:hover { transform: translateY(-10px); }
+        .menu-item img { width: 100%; height: 220px; object-fit: cover; background: #eee; }
+        
+        .menu-content { padding: 20px; }
+        .price { color: var(--primary); font-weight: 700; font-size: 1.3rem; margin: 10px 0; display: block; }
+        
+        .add-btn { 
+            width: 100%; padding: 12px; border: none; border-radius: 12px; 
+            background: var(--dark); color: white; font-weight: 600; cursor: pointer; transition: 0.2s;
+        }
+        .add-btn:hover { background: var(--primary); }
+
+        /* CART SIDEBAR */
+        .cart-box { 
+            position: sticky; top: 100px; background: white; padding: 25px; 
+            border-radius: 20px; box-shadow: var(--card-shadow); 
+        }
+        .cart-item { 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem;
+        }
+        .remove-btn { color: #ccc; cursor: pointer; border: none; background: none; font-size: 1.2rem; }
+        .remove-btn:hover { color: var(--primary); }
+        
+        .total-row { 
+            margin-top: 20px; padding-top: 15px; border-top: 2px solid #eee;
+            display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem;
         }
 
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+        .checkout-btn { 
+            width: 100%; margin-top: 20px; padding: 15px; border: none; 
+            border-radius: 12px; background: var(--success); color: white; 
+            font-weight: 700; cursor: pointer; 
         }
 
-        .menu-item {
-            background: var(--white);
-            border-radius: 0; /* Modern squared edges or very slight rounding */
-            overflow: hidden;
-            transition: var(--transition);
-            border-bottom: 3px solid transparent;
+        /* TOAST NOTIFICATION */
+        #toast {
+            position: fixed; bottom: 20px; right: 20px; background: var(--dark);
+            color: white; padding: 15px 25px; border-radius: 10px;
+            display: none; animation: slideIn 0.3s; z-index: 2000;
         }
 
-        .menu-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-bottom: 3px solid var(--accent);
-        }
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
-        .menu-img-container {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .menu-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .menu-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .menu-info {
-            padding: 25px;
-            text-align: center;
-        }
-
-        .menu-info h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            display: block;
-            font-weight: 300;
-            color: var(--accent);
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .order-btn {
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 12px 25px;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .order-btn:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        /* CART DESIGN */
-        .cart-container {
-            position: sticky;
-            top: 120px;
-            background: var(--white);
-            padding: 40px;
-            border: 1px solid #eee;
-        }
-
-        .cart-container h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .cart-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .cart-li {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #f9f9f9;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .total-box {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 20px;
-            font-weight: 600;
-            font-size: 1.2rem;
-            border-top: 1px solid var(--primary);
-        }
-
-        .checkout {
-            width: 100%;
-            padding: 20px;
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-top: 30px;
-            cursor: pointer;
-            letter-spacing: 2px;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 60px 5%;
-            text-align: center;
-        }
-
-        footer p {
-            opacity: 0.6;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
+        footer { background: var(--dark); color: #777; text-align: center; padding: 40px; margin-top: 60px; }
     </style>
 </head>
-
 <body>
 
 <nav>
-    <div class="logo">Àjọkẹ́</div>
-    <div style="font-size: 0.7rem; letter-spacing: 2px; font-weight: 600;">RESERVATIONS • ORDER ONLINE</div>
+    <div class="logo">Àjọkẹ́ Kitchen</div>
+    <div id="cart-counter">🛒 Items: 0</div>
 </nav>
 
 <header>
-    <div class="hero-box">
-        <h1>Artisan Dining</h1>
-        <p>A fusion of heritage and modern culinary art</p>
-        <a href="#menu" class="cta-btn">Explore Menu</a>
+    <div class="hero-content">
+        <h1>Deliciously Authentic</h1>
+        <p>Experience the finest Nigerian flavors in Lagos.</p><br>
+        <a href="#menu" class="cta-btn">Start Your Order</a>
     </div>
 </header>
 
-<div class="main-content" id="menu">
-    <section>
-        <h2 class="section-title">The Collection</h2>
-
-        <h3 class="category-header">Heritage Dishes</h3>
+<div class="container" id="menu">
+    <main>
+        <h2 class="category-title">🇳🇬 Nigerian Classics</h2>
         <div class="menu-grid">
             <div class="menu-item">
-                <div class="menu-img-container"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?auto=format&fit=crop&w=600&q=80"></div>
-                <div class="menu-info">
-                    <h3>Signature Jollof</h3>
+                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?auto=format&fit=crop&w=600&q=80" alt="Jollof">
+                <div class="menu-content">
+                    <h3>Party Jollof Rice</h3>
                     <span class="price">₦3,500</span>
-                    <button class="order-btn" onclick="addToCart('Signature Jollof', 3500)">Add to Selection</button>
+                    <button class="add-btn" onclick="addToCart('Party Jollof', 3500)">Add to Cart</button>
                 </div>
             </div>
             <div class="menu-item">
-                <div class="menu-img-container"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"></div>
-                <div class="menu-info">
-                    <h3>Egusi Royale</h3>
+                <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=600&q=80" alt="Egusi">
+                <div class="menu-content">
+                    <h3>Egusi & Pounded Yam</h3>
                     <span class="price">₦4,500</span>
-                    <button class="order-btn" onclick="addToCart('Egusi Royale', 4500)">Add to Selection</button>
+                    <button class="add-btn" onclick="addToCart('Egusi Soup', 4500)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Suya">
+                <div class="menu-content">
+                    <h3>Beef Suya Platter</h3>
+                    <span class="price">₦2,800</span>
+                    <button class="add-btn" onclick="addToCart('Beef Suya', 2800)">Add to Cart</button>
                 </div>
             </div>
         </div>
 
-        <h3 class="category-header">Continental Fusion</h3>
+        <h2 class="category-title">🌍 Intercontinental</h2>
         <div class="menu-grid">
             <div class="menu-item">
-                <div class="menu-img-container"><img src="https://images.unsplash.com/photo-1645112481338-316279f64481?auto=format&fit=crop&w=600&q=80"></div>
-                <div class="menu-info">
-                    <h3>Truffle Alfredo</h3>
+                <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600&q=80" alt="Pasta">
+                <div class="menu-content">
+                    <h3>Seafood Pasta</h3>
                     <span class="price">₦6,500</span>
-                    <button class="order-btn" onclick="addToCart('Truffle Alfredo', 6500)">Add to Selection</button>
+                    <button class="add-btn" onclick="addToCart('Seafood Pasta', 6500)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80" alt="Chicken">
+                <div class="menu-content">
+                    <h3>Grilled Chicken & Chips</h3>
+                    <span class="price">₦5,500</span>
+                    <button class="add-btn" onclick="addToCart('Grilled Chicken', 5500)">Add to Cart</button>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <aside>
-        <div class="cart-container">
-            <h2>Your Selection</h2>
-            <ul id="cartItems" class="cart-list">
-                <li style="text-align: center; color: #999; font-size: 0.7rem; letter-spacing: 1px;">SELECTION EMPTY</li>
-            </ul>
-            <div class="total-box">
-                <span>TOTAL</span>
+        <div class="cart-box">
+            <h2 style="margin-bottom: 20px;">Your Basket</h2>
+            <div id="cartItems">
+                <p style="text-align: center; color: #999;">Basket is empty</p>
+            </div>
+            <div class="total-row">
+                <span>Total</span>
                 <span>₦<span id="total">0</span></span>
             </div>
-            <button class="checkout" onclick="checkout()">Complete Order</button>
+            <button class="checkout-btn" onclick="checkout()">Checkout Now</button>
         </div>
     </aside>
 </div>
 
+<div id="toast">Added to cart! 😋</div>
+
 <footer>
-    <div class="logo" style="color: var(--accent); margin-bottom: 20px;">Àjọkẹ́ Kitchen</div>
-    <p>© 2026 Àjọkẹ́ CULINARY GROUP • VICTORIA ISLAND, LAGOS</p>
+    <p>© 2026 Àjọkẹ́ Kitchen | Victoria Island, Lagos</p>
 </footer>
 
 <script>
     let cart = [];
     let total = 0;
 
-    function addToCart(name, price){
-        cart.push({name, price});
+    function addToCart(name, price) {
+        cart.push({ name, price, id: Date.now() });
         total += price;
-        renderCart();
+        updateUI();
+        showToast(name);
     }
 
-    function renderCart(){
-        const cartItems = document.getElementById("cartItems");
-        const totalSpan = document.getElementById("total");
+    function removeItem(id, price) {
+        cart = cart.filter(item => item.id !== id);
+        total -= price;
+        updateUI();
+    }
+
+    function updateUI() {
+        const cartContainer = document.getElementById("cartItems");
+        const totalDisplay = document.getElementById("total");
+        const counter = document.getElementById("cart-counter");
+
+        counter.innerText = `🛒 Items: ${cart.length}`;
         
         if (cart.length === 0) {
-            cartItems.innerHTML = '<li style="text-align: center; color: #999; font-size: 0.7rem;">SELECTION EMPTY</li>';
+            cartContainer.innerHTML = '<p style="text-align: center; color: #999;">Basket is empty</p>';
         } else {
-            cartItems.innerHTML = "";
-            cart.forEach((item) => {
-                const li = document.createElement("li");
-                li.className = "cart-li";
-                li.innerHTML = `<span>${item.name}</span><span>₦${item.price.toLocaleString()}</span>`;
-                cartItems.appendChild(li);
-            });
+            cartContainer.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <span>${item.name}</span>
+                    <div>
+                        <span>₦${item.price.toLocaleString()}</span>
+                        <button class="remove-btn" onclick="removeItem(${item.id}, ${item.price})">×</button>
+                    </div>
+                </div>
+            `).join('');
         }
-        totalSpan.textContent = total.toLocaleString();
+        totalDisplay.innerText = total.toLocaleString();
+    }
+
+    function showToast(name) {
+        const toast = document.getElementById("toast");
+        toast.innerText = `${name} added! 😋`;
+        toast.style.display = "block";
+        setTimeout(() => { toast.style.display = "none"; }, 2000);
     }
 
     function checkout() {
-        if(cart.length === 0) return alert("Your selection is empty.");
-        alert("Your order has been received. Total: ₦" + total.toLocaleString());
-        cart = []; total = 0; renderCart();
+        if(cart.length === 0) return alert("Your basket is empty!");
+        alert(`Order confirmed! Total: ₦${total.toLocaleString()}\nPreparing your meal...`);
+        cart = [];
+        total = 0;
+        updateUI();
     }
 </script>
 
